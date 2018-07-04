@@ -23,7 +23,7 @@ function Todo() {
 function render() {
     list.innerHTML = '';
     todos.map(todo => {
-        todo.el.innerHTML = todo.html + `<input class="${classNames.TODO_CHECKBOX}" type="checkbox" onchange="checkTodo(${todo.id})" ${todo.checked ? 'checked' : ''}></input>`;
+        todo.el.innerHTML = `<input class="${classNames.TODO_CHECKBOX}" type="checkbox" onchange="checkTodo(${todo.id})" ${todo.checked ? 'checked' : ''}></input>` +  todo.html;
         list.appendChild(todo.el);
     });
 }
@@ -34,7 +34,7 @@ function newTodo() {
 
     todo.el.classList.add(classNames.TODO_ITEM);
 
-    todo.html = `<p class="${classNames.TODO_TEXT}">${todo.text}</p><button class="${classNames.TODO_DELETE}" onClick="delTodo(${todo.id})">delete</button>`;
+    todo.html = `<span class="${classNames.TODO_TEXT}">${todo.text}</span><button class="${classNames.TODO_DELETE}" onClick="delTodo(${todo.id})">delete</button>`;
     itemCountSpan.innerHTML = Number(itemCountSpan.innerHTML) + 1;
     unChecked();
     render();
